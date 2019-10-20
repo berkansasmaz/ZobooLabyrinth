@@ -1,0 +1,10 @@
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\bin\Debug\Labirent.exe.config
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\bin\Debug\Labirent.exe
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\bin\Debug\Labirent.pdb
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\obj\Debug\Labirent.csprojAssemblyReference.cache
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\obj\Debug\Labirent.AnaSayfa.resources
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\obj\Debug\Labirent.Labirent.resources
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\obj\Debug\Labirent.Properties.Resources.resources
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\obj\Debug\Labirent.csproj.GenerateResource.cache
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\obj\Debug\Labirent.exe
+Z:\Documents\Software\C#\OOP\Labirent\Labirent\obj\Debug\Labirent.pdb
