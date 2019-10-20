@@ -14,7 +14,7 @@
 <p>Projemiz single player, multi player ve bilgisayarın oynadığı oyun modlarını içermektedir. </p>
 ## :heavy_check_mark: Todo <br>
 - [x] Single Player
-- [] Tasarımı düzeltilecek
+- [ ] Tasarımı düzeltilecek
 - [x] Bilgisayarın oynadığı mod eklenicek
 - [ ] Multi Player
 - [ ] Refactor
