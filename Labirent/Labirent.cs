@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,11 +18,12 @@ namespace Labirent
         public int OyunModu { get; set; }
         private void Labirent_Load(object sender, EventArgs e)
         {
-            LabirentOlustur();
-            if (OyunModu == 2)
-            {
-                BilgisayarBekletme.Start();
-            }
+            //LabirentOlustur();
+            //if (OyunModu == 2)
+            //{
+            //    BilgisayarBekletme.Start();
+            //}
+            TCP();
 
         }
         public Labirent()
@@ -32,6 +35,7 @@ namespace Labirent
         {
             InitializeComponent();
             this.OyunModu = _oyunModu;
+           
         }
         int duvar = 999;
         int yol = 1;
@@ -342,5 +346,68 @@ namespace Labirent
         {
             OtomatikHareketEt();
         }
+
+        private void TCP()
+        {
+            //Bilgi alisverisi için bilgi almak istedigimiz port numarasini TcpListener sinifi ile gerçeklestiriyoruz
+
+            TcpListener TcpDinleyicisi = new TcpListener(1234);
+            TcpDinleyicisi.Start();
+
+            MessageBox.Show("Sunucu baslatildi...");
+
+            //Soket baglantimizi yapiyoruz.Bunu TcpListener sinifinin AcceptSocket metodu ile yaptigimiza dikkat edin
+            Socket IstemciSoketi = TcpDinleyicisi.AcceptSocket();
+
+
+            // Baglantının olup olmadığını kontrol ediyoruz
+            if (!IstemciSoketi.Connected)
+            {
+                MessageBox.Show("Sunucu baslatilamiyor...");
+            }
+            else
+            {
+                //Sonsuz döngü sayesinde AgAkimini sürekli okuyoruz
+                while (true)
+                {
+                    MessageBox.Show("Istemci baglantisi saglandi...");
+
+                    //IstemciSoketi verilerini NetworkStream sinifi türünden nesneye aktariyoruz.
+                    NetworkStream AgAkimi = new NetworkStream(IstemciSoketi);
+
+                    //Soketteki bilgilerle islem yapabilmek için StreamReader ve StreamWriter siniflarini kullaniyoruz
+                    StreamWriter AkimYazici = new StreamWriter(AgAkimi);
+                    StreamReader AkimOkuyucu = new StreamReader(AgAkimi);
+
+
+                    //StreamReader ile String veri tipine aktarma islemi önceden bir hata olursa bunu handle etmek gerek
+                    try
+                    {
+                        string IstemciString = AkimOkuyucu.ReadLine();
+
+                        MessageBox.Show("Gelen Bilgi:" + IstemciString);
+
+                        //Istemciden gelen bilginin uzunlugu hesaplaniyor
+                        int uzunluk = IstemciString.Length;
+
+                        //AgAkimina, AkimYazını ile IstemciString inin uzunluğunu yazıyoruz
+                        AkimYazici.WriteLine(uzunluk.ToString());
+
+                        AkimYazici.Flush();
+                    }
+
+                    catch
+                    {
+                        MessageBox.Show("Sunucu kapatiliyor...");
+                        return;
+                    }
+                }
+            }
+
+            IstemciSoketi.Close();
+            MessageBox.Show("Sunucu Kapatiliyor...");
+        }
     }
+
 }
+
