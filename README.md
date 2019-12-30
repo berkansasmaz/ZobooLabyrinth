@@ -12,11 +12,12 @@
 
 ## :heavy_check_mark: Projenin Çalışma Mantığı
 <p>Projemiz single player, multi player ve bilgisayarın oynadığı oyun modlarını içermektedir. </p>
+
 ## :heavy_check_mark: Todo <br>
-- [x] Single Player
-- [] Tasarımı düzeltilecek
+- [x] SinglePlayer
+- [ ] Tasarımı düzeltilecek
 - [x] Bilgisayarın oynadığı mod eklenicek
-- [ ] Multi Player
+- [ ] MultiPlayer
 - [ ] Refactor
   
 ##  :heavy_check_mark: Proje Ekibi <br>
